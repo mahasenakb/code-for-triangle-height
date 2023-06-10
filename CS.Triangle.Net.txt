@@ -1,0 +1,73 @@
+using System;
+
+public class Triangle
+{
+    public int height;
+    private string pyramid = "";
+
+    public Triangle(int height)
+    {
+        this.height = height;
+    }
+
+    public String makeTriangle()
+    { int cutEnds = biggestOddNumber() / 2;
+
+        for (int i = 0; i < height; i++)
+        {
+            for (int j = 1; j <= biggestOddNumber(); j++)
+            {
+                String singleElement = "*";
+
+                if (j <= cutEnds || j > (biggestOddNumber()-cutEnds))
+                {
+                    pyramid = pyramid + " ";
+                }
+                else
+                {
+                    pyramid = pyramid + singleElement;
+                }
+
+                if (j == biggestOddNumber())
+                {
+                    pyramid = pyramid + "\r\n";
+                }
+            }
+            cutEnds--;
+
+        }
+        return pyramid;
+    }
+
+    public int biggestOddNumber()
+    {
+        
+        //Formula for Odd Numbers = 2n + 1
+        
+         return (2 * (height-1) + 1);
+
+    }
+}
+
+  Main Method
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            Console.WriteLine("Enter height of pyramid");
+            int height = int.Parse(Console.ReadLine());
+            Triangle triangle = new Triangle(height);
+            Console.WriteLine(triangle.makeTriangle());
+        }
+    }
+}
